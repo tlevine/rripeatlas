@@ -58,5 +58,9 @@ get.measurement <- function(id = NULL) {
 }
 
 #' For example, https://atlas.ripe.net/api/v1/measurement/1001/result/
-get.result <- function(id)
-  paste0(API_ROOT, 'measurement/', id, 'result/')
+get.result <- function(id) {
+  url <- paste0(API_ROOT, 'measurement/', id, '/result/')
+  text <- RCurl::getURL(url, httpheader = HTTPHEADER)
+  xml <- XML::xmlTreeParse(text)
+  xml
+}
