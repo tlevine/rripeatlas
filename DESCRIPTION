@@ -1,4 +1,4 @@
-Package: rripe-atlas
+Package: rripeatlas
 Title: Query RIPE Atlas
 Version: 0.1
 Authors@R: "Thomas Levine <_@thomaslevine.com> [aut, cre]"
