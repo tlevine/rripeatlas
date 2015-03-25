@@ -19,28 +19,32 @@ get.measurement <- function(id = NULL) {
   xml <- XML::xmlTreeParse(text)
 
   if (is.null(id)) {
-    url
+    xml
   } else {
-    f <- function(name) {
-      node <- xml$doc$children$object[[name]]
-      attrs <- xmlAttrs(node)
-      if ('type' %in% names(attrs)) {
-        type <- TYPES[[attrs[['type']]]]
-      } else if (length(node) == 1) {
-        type <- as.character
-      } else {
-        type <- TYPES[['null']]
-      }
-      v <- xmlValue(node)
-      if (length(v) == 0)
-        v <- NA
-      df <- data.frame(k = type(v))
-      names(df) <- name
-      df
-    }
-    dfs <- lapply(names(xml$doc$children$object), f)
-    do.call(cbind, dfs)
+    .parse.object(xml$doc$children$object)
   }
+}
+
+.parse.object <- function(object) {
+  f <- function(name) {
+    node <- object[[name]]
+    attrs <- xmlAttrs(node)
+    if ('type' %in% names(attrs)) {
+      type <- TYPES[[attrs[['type']]]]
+    } else if (length(node) == 1) {
+      type <- as.character
+    } else {
+      type <- TYPES[['null']]
+    }
+    v <- xmlValue(node)
+    if (length(v) == 0)
+      v <- NA
+    df <- data.frame(k = type(v))
+    names(df) <- name
+    df
+  }
+  dfs <- lapply(names(object), f)
+  do.call(cbind, dfs)
 }
 
 #' For example, https://atlas.ripe.net/api/v1/measurement/1001/result/
