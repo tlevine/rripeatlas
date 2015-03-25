@@ -25,7 +25,8 @@ https://atlas.ripe.net/api/v1/measurement/1001/. ::
 
     get.measurement(1001)
 
-Get a result, like from ``https://atlas.ripe.net/api/v1/measurement/1001/result/``.
+Get a result, like from
+``https://atlas.ripe.net/api/v1/measurement/1001/result/``. ::
 
     get.result(1001)
 
