@@ -19,6 +19,7 @@ get.measurement <- function(id = NULL) {
   xml <- XML::xmlTreeParse(text)
 
   if (is.null(id)) {
+    url
   } else {
     f <- function(name) {
       node <- xml$doc$children$object[[name]]
@@ -34,8 +35,6 @@ get.measurement <- function(id = NULL) {
       if (length(v) == 0)
         v <- NA
       df <- data.frame(k = type(v))
-      print(v)
-      print(names(df))
       names(df) <- name
       df
     }
