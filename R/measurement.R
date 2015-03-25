@@ -40,9 +40,10 @@ get.measurement <- function(id = NULL) {
       df
     }
     dfs <- lapply(names(xml$doc$children$object), f)
-    df <- do.call(cbind, dfs)
+    do.call(cbind, dfs)
+  }
+}
 
 #' For example, https://atlas.ripe.net/api/v1/measurement/1001/result/
 get.result <- function(id)
   paste0(API_ROOT, 'measurement/', id, 'result/')
-
