@@ -32,7 +32,8 @@ https://atlas.ripe.net/api/v1/measurement/1001/. ::
 Get a result, like from
 ``https://atlas.ripe.net/api/v1/measurement/1001/result/``. ::
 
-    get.result(1001)
+    # Not yet implemented because I'm waiting for the result to download!
+    # get.result(1001)
 
 The interface is quite basic at the moment; tell me if there's a particular
 option/feature you need.
