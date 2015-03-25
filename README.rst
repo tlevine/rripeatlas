@@ -4,7 +4,11 @@ Query `RIPE Atlas <https://atlas.ripe.net>`_ data.
 
 Install
 -----------
-It is an R package. ::
+You'll need some C libraries. I think this works on Debian. ::
+
+    sudo apt-get install libxml2-dev curl
+
+Then install the R package. ::
 
     wget https://github.com/tlevine/rripe-atlas/archive/master.tar.gz
     R CMD INSTALL master.tar.gz
