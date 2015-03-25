@@ -19,7 +19,17 @@ get.measurement <- function(id = NULL) {
   xml <- XML::xmlTreeParse(text)
 
   if (is.null(id)) {
-    xml
+    # xml$doc$children$response[['meta']]
+
+    # This doesn't work. Dunno why.
+    # Reduce(rbind, lapply(xml$doc$children$response[['objects']], .parse.object))
+
+    objects <- xml$doc$children$response[['objects']]
+    df <- objects[[1]]
+    for (object in objects[-1])
+      df <- rbind(df, object)
+    df
+
   } else {
     .parse.object(xml$doc$children$object)
   }
