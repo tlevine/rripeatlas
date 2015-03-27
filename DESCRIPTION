@@ -1,0 +1,7 @@
+Package: rripeatlas
+Title: Query RIPE Atlas
+Version: 0.1
+Authors@R: "Thomas Levine <_@thomaslevine.com> [aut, cre]"
+Description: Get measurements and results
+Depends: R (>= 3.1.1), XML, RCurl
+License: AGPL
